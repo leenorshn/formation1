@@ -40,16 +40,16 @@ import { useState } from "react";
     <button className="text-white bg-blue-600 rounded px-6 py-3" onClick={addInTodo}>Ajouter</button>
     </div>
     
-    <div className="px-4 py-2 mt-4">
+    <div className="px-4 py-2 mt-4 space-y-2">
       {/* liste de tache */}
       {listTaches.map((l,index)=>(
-      <div key={l.id} className="flex items-center justify-between border-2 px-8 py-4 border-gray-500 rounded-md">
-         <span className="p-6 rounded-full bg-red-600 text-sm">{index}</span>
+      <div key={l.id} className="flex  items-center justify-between border-2 px-8 py-4 border-gray-500 rounded-md">
+         <span className="p-2 rounded-full bg-blue-600 w-10 text-center text-white text-sm">{index}</span>
         <h3>{l.tache}
         <span onClick={e=>validateTache(l.id)} 
         className={l.isCompleted?`isCompleted`:'isNotCompleted'}>{l.isCompleted}</span> 
          </h3>
-         <button onClick={e=>deleteTache(l.id)}>Effacer</button>
+         <button className="" onClick={e=>deleteTache(l.id)}>Effacer</button>
       </div>))}
     </div>
   </div>
