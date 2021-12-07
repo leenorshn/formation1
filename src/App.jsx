@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css"
+
 
 
  const App=()=>{
@@ -27,23 +27,29 @@ import "./App.css"
    setListTaches(t)
   }
 
-  return <div>
-    <h1>Mon Gestion De taches</h1>
+  return <div className="max-w-4xl mx-auto shadow bg-white">
+    <div className="h-16 rounded-t-md mt-4 flex items-center justify-center bg-blue-600">
+    <h1 className="text-3xl font-semibold text-white">Mon gestion de taches</h1>
+    </div>
+    <div className="mt-5 flex items-center space-x-4 px-4">
     <input 
+    className="px-4 py-3 flex-1 rounded-md shadow border-gray-400 outline-none "
     value={input}
     onChange={e=>setInput(e.target.value)}
     type="text" placeholder="Entrer votre tache" />
-    <button onClick={addInTodo}>Ajouter</button>
-    <div>
+    <button className="text-white bg-blue-600 rounded px-6 py-3" onClick={addInTodo}>Ajouter</button>
+    </div>
+    
+    <div className="px-4 py-2 mt-4">
       {/* liste de tache */}
       {listTaches.map((l,index)=>(
-      <div key={l.id}>
-
-        <h3><span>{index}--</span>{l.tache}
+      <div key={l.id} className="flex items-center justify-between border-2 px-8 py-4 border-gray-500 rounded-md">
+         <span className="p-6 rounded-full bg-red-600 text-sm">{index}</span>
+        <h3>{l.tache}
         <span onClick={e=>validateTache(l.id)} 
         className={l.isCompleted?`isCompleted`:'isNotCompleted'}>{l.isCompleted}</span> 
-        <button onClick={e=>deleteTache(l.id)}>Effacer</button> </h3>
-        
+         </h3>
+         <button onClick={e=>deleteTache(l.id)}>Effacer</button>
       </div>))}
     </div>
   </div>
